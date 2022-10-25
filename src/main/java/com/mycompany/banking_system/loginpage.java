@@ -210,6 +210,8 @@ public class loginpage extends javax.swing.JFrame {
                 
                 if(un.equals(username)&&pw.equals(password)){
                     new dashboard().setVisible(true);
+                    dispose();
+                  
                 }
                 else{
                     JOptionPane.showMessageDialog(this,"Username or password is incorrect.");
