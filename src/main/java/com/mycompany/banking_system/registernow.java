@@ -1,3 +1,5 @@
+package com.mycompany.banking_system;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -240,8 +242,9 @@ public class registernow extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con=(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/banking","root","");
             String sql="insert into registernow values(?,?,?,?,?,?,?,?)";
-            
+            String sql1="INSERT INTO login VALUES(?,?)";
             PreparedStatement pstmt=con.prepareStatement(sql);
+            PreparedStatement pstmt1=con.prepareStatement(sql1);
             pstmt.setString(1, idtype.getText());
             pstmt.setString(2, idnum.getText());
             pstmt.setString(3, accnum.getText());
@@ -252,7 +255,11 @@ public class registernow extends javax.swing.JFrame {
             pstmt.setString(8, password.getText());
             
             pstmt.executeUpdate();
+            pstmt1.setString(1,username.getText());
+            pstmt1.setString(2,password.getText());
             
+            
+            pstmt1.executeUpdate();
             JOptionPane.showMessageDialog(null, "DATA has been insterted successfully !");
             con.close();
             
